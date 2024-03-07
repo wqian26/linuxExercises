@@ -16,12 +16,10 @@ fi
 sum=0
 count=0
 
-data=$(cut -d, -f"$column" "$file" | tail -n +2)
-
-echo "$data" | while read value; do
+while read value; do
     sum=$(echo "$sum + $value" | bc)
     ((count++))
-done
+done < <(cut -d, -f"$column" "$file" | tail -n +2)
 
 if [ $count -gt 0 ]; then
     mean=$(echo "scale=2; $sum / $count" | bc)
