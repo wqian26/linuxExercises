@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ "$#" -lt 1 ]; then
     echo "Usage: ./mean.sh <column> [file.csv]" >&2
     exit 1
